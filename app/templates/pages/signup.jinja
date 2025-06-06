@@ -1,0 +1,51 @@
+{#=====================================================
+  Things list page
+  - List of things passed in as 'things' array
+  - Form for adding a new thing
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+    Flask Demo - All Things
+
+{% endblock %}
+
+
+{% block content %}
+
+    <article>
+
+        <h3>Sign Up</h3>
+
+        <form action="/add-user" method="POST">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                required
+            >
+             <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                required
+            >
+             <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+            >
+
+            <button>Sign Up</button>
+
+        </form>
+
+    </article>
+
+{% endblock %}
+
