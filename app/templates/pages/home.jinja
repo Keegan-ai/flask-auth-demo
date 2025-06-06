@@ -1,0 +1,38 @@
+{#=====================================================
+  Home page
+  - Hero style greeting banner
+  - List of things passed in as 'things' array
+  - Form for adding a new thing
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+    Flask Demo
+
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Flask Demo App with Turso DB</h1>
+
+    <p>This is a simple Flask app that connects to a Turso database to save and retrieve data. This can be used as the basis of your web app.</p>
+
+    <p>It includes...</p>
+
+    <ul>
+        <li>Example routes</li>
+        <li>Example static pages</li>
+        <li>Missing page and server error pages</li>
+        <li>DB connection and error handling</li>
+        <li>Example CRUD actions: Create and Delete</li>
+        <li>Flash messages for information</li>
+    </ul>
+
+    <a href="/things" role="button">Go to the Things...</a>
+
+{% endblock %}
+

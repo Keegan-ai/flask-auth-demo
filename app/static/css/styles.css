@@ -1,0 +1,66 @@
+/*=====================================================
+  User stylesheet - Building upon PicoCSS
+=====================================================*/
+
+
+/* ABOUT PAGE -------------------------------------------- */
+
+#tech-stack {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+#tech-stack article {
+    flex: 1;
+}
+
+
+/* MESSAGES -------------------------------------------- */
+
+#messages {
+    position: fixed;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    animation: fade-out 1s ease 2s forwards;
+}
+
+@keyframes fade-out {
+    from { opacity: 1; z-index: 99; }
+    to   { opacity: 0; z-index: -1; }
+}
+
+#messages ul {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#messages .message {
+    list-style: none;
+    text-align: center;
+    padding: 1rem;
+    max-width: 30ch;
+    margin-bottom: 1rem;
+    background-color: var(--pico-background-color);
+    border: 2px solid var(--pico-primary-border);
+    box-shadow: var(--pico-box-shadow);
+    border-radius: 0.5em;
+}
+
+#messages .message.success {
+    color: green;
+    border-color: green;
+}
+
+#messages .message.warning {
+    color: orange;
+    border-color: orange;
+}
+
+#messages .message.error {
+    color: red;
+    border-color: red;
+}
+
