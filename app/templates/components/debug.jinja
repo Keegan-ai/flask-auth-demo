@@ -7,49 +7,49 @@
 
 {% if config.DEBUG %}
 
-    <div id="debug" style="position: fixed;
-                           right: 1em;
-                           bottom: 1em;
-                           width: fit-contents;
-                           font-size: 0.8rem;
-                           line-height: 1;
-                           padding: 0.75em 1em 0;
-                           background-color: var(--pico-background-color);
-                           border: 2px solid red;
-                           border-radius: 0.4em;
-                           box-shadow: 0 0.25em 1em #0007">
+    <table
+        id="debug"
+        style="
+            --pico-spacing: 0.5em;
+            position: fixed;
+            right: 1rem;
+            bottom: 1em;
+            width: fit-content;
+            padding: 0.75em 1em 0;
+            margin: 0;
+            border: 2px solid var(--pico-table-border-color);
+            box-shadow: var(--pico-box-shadow);
+            font-size: 0.8rem;
+            line-height: 1;
+            z-index: 999;
+            opacity: 0.3;
+            transform: translate(calc(100% - 1rem), calc(100% - 1rem));
+            transition: all 200ms;
+        "
+        onmouseover="this.style.opacity='1';this.style.transform='translate(0)';"
+    >
+        <tr><th colspan="2"><strong>Request Data</strong></th></tr>
 
-        <p><strong>Request Data</strong></p>
-
-        <ul>
-            <li>Path: <strong>{{ request.path }}</strong></li>
-            <li>Method: <strong>{{ request.method }}</strong></li>
-            <li>Route: <strong>{{ request.url_rule }}</strong></li>
-            <li>Func: <strong>{{ request.endpoint }}</strong></li>
-            <li>Args:
-                {% if request.view_args.items() %}
-                    <ul>
-                        {% for key, value in request.view_args.items() %}
-                            <li><strong>{{ key }}: {{ value }}</strong></li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <em>None</em>
-                {% endif %}
-            </li>
-        </ul>
-
-        <p><strong>Session Data</strong></p>
-
-        <ul>
-            {% for key, value in session.items() %}
-                <li>{{ key }}: <strong>{{ value }}</strong></li>
+        <tr><th>&nbsp;URL  </th><td><strong>{{ request.path     }}</strong></td></tr>
+        <tr><th>&nbsp;Route</th><td><strong>{{ request.url_rule }}</strong></td></tr>
+        <tr><th>&nbsp;Func </th><td><strong>{{ request.endpoint }}</strong></td></tr>
+        <tr><th>&nbsp;Args </th><td>
+            {% if request.view_args and request.view_args.items() %}
+                {% for key, value in request.view_args.items() %}
+                    <strong>{{ key }}: {{ value }}</strong><br>
+                {% endfor %}
             {% else %}
-                <p><em>None</em></p>
-            {% endfor %}
-        </ul>
+                None
+            {% endif %}
+        </td></tr>
 
-    </div>
+        <tr><th colspan="2"><strong>Session Data</strong></th></tr>
+
+        {% for key, value in session.items() %}
+            <tr><th>&nbsp;{{ key }}</th><td><strong>{{ value }}</strong></td></tr>
+        {% else %}
+            <tr><td colspan="2">&nbsp;None</td></tr>
+        {% endfor %}
+    </table>
 
 {% endif %}
-
