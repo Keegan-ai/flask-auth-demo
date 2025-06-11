@@ -33,15 +33,29 @@
     <header>
         <nav>
             <ul>
+                {%  if session.user_name %}
+
                 <li><strong><a href="/">Flask App Demo</a></strong></li>
+
+                {% endif %}
             </ul>
 
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/things">Things</a></li>
                 <li><a href="/about">About</a></li>
+
+                {%  if session.user_id  %}
+
+                <li><a href="/logout">Logout</a></li>
+                
+
+                {% else %}
                 <li><a href="/signup">Sign-Up</a></li>
                 <li><a href="/login">Login</a></li>
+
+                {% endif %}
+
             </ul>
         </nav>
     </header>

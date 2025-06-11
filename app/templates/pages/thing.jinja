@@ -25,11 +25,19 @@
             <h3>{{ thing.t_name }}</h3>
         </header>
 
-        <p>Owner: <strong>${{ thing.u_name }}</strong></p>
+        <p>Owner: <strong>{{ thing.u_name }}</strong></p>
 
-        <footer>
-            <a href="/delete/{{ thing.t_id }}" onclick="return confirm('Really delete?');">Delete</a>
-        </footer>
+        {% if session.user_id%}
+
+            {% if session.user_id == thing.u_id %}
+
+                <footer>
+                <a href="/delete/{{ thing.t_id }}" onclick="return confirm('Really delete?');">Delete</a>
+                </footer>
+
+            {% endif %}
+
+        {% endif %}    
 
     </article>
 

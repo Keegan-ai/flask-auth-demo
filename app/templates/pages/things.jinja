@@ -40,6 +40,8 @@
     </article>
 
 
+
+    {% if session.user_id %}
     <article>
 
         <h3>Add a New Thing...</h3>
@@ -52,20 +54,13 @@
                 placeholder="Name of new thing"
                 required
             >
-
-            <input
-                type="number"
-                name="price"
-                min="0"
-                placeholder="Price in dollars"
-                required
-            >
-
+            
             <button>Add the Thing</button>
 
         </form>
 
     </article>
+    {% endif %}
 
 {% endblock %}
 
